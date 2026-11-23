@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A0C">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:gravity="center_horizontal">
+
+        <!-- Header: Shoala Logo & Name -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_shoala_logo"
+                android:contentDescription="شعلة"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="شعلة"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Profile, XP & Spendable Flames Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_flame_card"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/profileRankText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="🌱 المستوى 1 • مبتدئ"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/flamesCountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔥 0"
+                    android:textColor="#FF9100"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/levelProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:max="100"
+                android:progress="0"
+                android:progressTint="#FF5722"
+                android:progressBackgroundTint="#2B1B18"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="6dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nextLevelText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="XP: 0 • متبقي 100 للمستوى 2"
+                    android:textColor="#B0A8A8"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/streakInfoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ستريك: 0 يوم (5🔥/5د)"
+                    android:textColor="#FFAB00"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Circular Count-Up Timer Ring -->
+        <LinearLayout
+            android:layout_width="215dp"
+            android:layout_height="215dp"
+            android:background="@drawable/bg_timer_ring"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rewardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="متاح: 0 د سوشيال"
+                android:textColor="#FF9100"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"/>
+        </LinearLayout>
+
+        <!-- NFC Lock Status -->
+        <TextView
+            android:id="@+id/nfcStateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔓 البرنامج متوقف (المس كارت الـ NFC لقفل السوشيال)"
+            android:textColor="#FF6D00"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/bg_flame_card"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="اضغط 'ابدأ احسب' لبدء جلسة المذاكرة"
+            android:textColor="#FFCCBC"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:id="@+id/bingeStatsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سوشيال اليوم: 0 / 180 دقيقة (يقفل ساعة عند 3 ساعات)"
+            android:textColor="#8E7B78"
+            android:textSize="11sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="14dp"/>
+
+        <!-- Start/End & Pause/Resume Controls -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnStartEndSession"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="ابدأ احسب"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_flame_button"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnPauseResume"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="إيقاف مؤقت"
+                android:textSize="14sp"
+                android:backgroundTint="#241918"
+                android:textColor="#FFAB40"/>
+        </LinearLayout>
+
+        <!-- Spend Flames Mode Button -->
+        <Button
+            android:id="@+id/btnSpendFlames"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="🔥 فتح السوشيال بالشعلات (6 🔥 / دقيقة)"
+            android:textSize="13sp"
+            android:backgroundTint="#2B1410"
+            android:textColor="#FF9100"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Setup Controls: Accessibility & NFC Reset -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="18dp">
+
+            <Button
+                android:id="@+id/btnAccessibility"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="38dp"
+                android:text="تفعيل قفل السوشيال"
+                android:textSize="12sp"
+                android:backgroundTint="#B71C1C"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="6dp"/>
+
+            <Button
+                android:id="@+id/btnResetNfc"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="38dp"
+                android:text="تغيير كارت الـ NFC"
+                android:textSize="12sp"
+                android:backgroundTint="#1E1717"
+                android:textColor="#CCCCCC"/>
+        </LinearLayout>
+
+        <!-- Weekly / Monthly Chart Toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/chartTitleText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="الرسم البياني (أسبوعي)"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnWeeklyChart"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="أسبوعي"
+                android:textSize="12sp"
+                android:backgroundTint="#FF3D00"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="6dp"/>
+
+            <Button
+                android:id="@+id/btnMonthlyChart"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="شهري"
+                android:textSize="12sp"
+                android:backgroundTint="#221918"
+                android:textColor="#CCCCCC"/>
+        </LinearLayout>
+
+        <com.example.studyvault.WeeklyBarChartView
+            android:id="@+id/weeklyChart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_flame_card"
+            android:padding="10dp"
+            android:layout_marginBottom="14dp"/>
+
+        <!-- Today / Week / Month / Year Stats Grid -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:background="@drawable/bg_flame_card" android:padding="14dp" android:layout_margin="5dp" android:gravity="center">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="اليوم" android:textColor="#B0A8A8" android:textSize="13sp"/>
+                <TextView android:id="@+id/todayStatsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 د" android:textColor="#FF9100" android:textSize="19sp" android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:background="@drawable/bg_flame_card" android:padding="14dp" android:layout_margin="5dp" android:gravity="center">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="هذا الأسبوع" android:textColor="#B0A8A8" android:textSize="13sp"/>
+                <TextView android:id="@+id/weekStatsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 د" android:textColor="#FFFFFF" android:textSize="19sp" android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:background="@drawable/bg_flame_card" android:padding="14dp" android:layout_margin="5dp" android:gravity="center">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="هذا الشهر" android:textColor="#B0A8A8" android:textSize="13sp"/>
+                <TextView android:id="@+id/monthStatsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 د" android:textColor="#FFFFFF" android:textSize="19sp" android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical" android:background="@drawable/bg_flame_card" android:padding="14dp" android:layout_margin="5dp" android:gravity="center">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="هذه السنة" android:textColor="#B0A8A8" android:textSize="13sp"/>
+                <TextView android:id="@+id/yearStatsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 د" android:textColor="#FFFFFF" android:textSize="19sp" android:textStyle="bold"/>
+            </LinearLayout>
+        </GridLayout>
+
+        <!-- Personal Records & Badges -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_flame_card"
+            android:padding="16dp"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏆 الأرقام القياسية والجوائز"
+                android:textColor="#FFAB00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/recordsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="أطول جلسة: 0 د | أعلى يوم: 0 د | أطول ستريك: 0 يوم"
+                android:textColor="#E0D6D5"
+                android:textSize="13sp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/badgesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="الجوائز المفتوحة: ابدأ المذاكرة لفتح أول جائزة!"
+                android:textColor="#FF6D00"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
